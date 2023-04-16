@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="module" src="/script.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/barcodes/JsBarcode.code128.min.js" defer></script>
+	</head>
+	<body>
+		<header><p>Recon Helper</p></header>
+		<nav>
+			<ul class="ul_nav">
+				<li class="main_btn"><a href="#">Main</a></li>
+				<li class="edit_btn"><a href="#">edit</a></li>
+				<li class="delete_btn"><a href="#">delete</a></li>
+				<li disabled><a href="#">settings</a></li>
+			</ul>
+		</nav>
+
+		<section class="btn-block"></section>
+
+		<div class="add-barcode" style="display: none">
+			<p>add barcode</p>
+			<div>
+				<p>input text barcode</p>
+				<br />
+				<input type="text" id="add_text_barcode" placeholder="add-barcode" />
+			</div>
+
+			<div>
+				<input style="display: none" type="file" id="image_field" name="image_field" />
+			</div>
+
+			<button class="back">back</button>
+			<button class="submit_add_item">add</button>
+		</div>
+		<div class="delete-barcode" style="display: none">
+			<p>delete barcode</p>
+			<div>
+				<select class="select_delete" name="select_delete"></select>
+				<button class="back">back</button>
+				<button class="submit_delete_item">delete</button>
+			</div>
+		</div>
+
+		<div class="barcode_wrapper">
+			<svg id="barcode" style="display: none"></svg>
+		</div>
+		<footer>
+			<div style="text-align: center">
+				<a href="https://www.linkedin.com" class="social-icons linkedin-icon"></a>
+				<a href="https://t.me/Andrey_Kislinskiy" class="social-icons telegram-icon"></a>
+			</div>
+		</footer>
+	</body>
+</html>
