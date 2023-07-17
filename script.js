@@ -1,6 +1,5 @@
 const url = 'data.json';
 
-const back = document.querySelector('.back');
 const btnBlock = document.querySelector('.btn-block');
 const editBtn = document.querySelector('.edit_btn');
 const deleteBtn = document.querySelector('.delete_btn');
@@ -12,9 +11,6 @@ const selectDelete = document.querySelector('.select_delete');
 const nav = document.querySelector('nav');
 const footer = document.querySelector('footer');
 const barcode_wrapper = document.querySelector('.barcode_wrapper');
-const submitAddItem = document.querySelector('.submit_add_item');
-const addTextBarcode = document.querySelector('#add_text_barcode');
-const submitDeleteItem = document.querySelector('.submit_delete_item');
 
 const closeAllWindow = () => {
 	btnBlock.style.display = 'none';
@@ -42,11 +38,6 @@ deleteBtn.addEventListener('click', () => {
 	getDataLS();
 	fillpossibleDeletionList();
 	deleteBarcode.style.display = 'block';
-});
-
-back.addEventListener('click', () => {
-	closeAllWindow();
-	btnBlock.style.display = 'block';
 });
 
 barcode.addEventListener('click', () => {
@@ -85,6 +76,7 @@ const setBaseDataToLocalStorage = data => {
 		const userData = {};
 		Object.assign(userData, data);
 		localStorage.setItem('userData', JSON.stringify(userData));
+		console.log(localStorageData);
 		createLineButtons(data);
 	} else {
 		createLineButtons(localStorageData);
@@ -126,9 +118,12 @@ const createImg = lineName => {
 		width: 4,
 		height: 200,
 	});
+
+	console.log(barcode);
 };
 
 const addBtnListener = () => {
+	const tech = document.querySelector('.tech');
 	let btns = document.querySelectorAll('.text-block');
 
 	for (let i = 0; i < btns.length; i++) {
@@ -141,6 +136,9 @@ const addBtnListener = () => {
 
 getData();
 
+const submitAddItem = document.querySelector('.submit_add_item');
+const addTextBarcode = document.querySelector('#add_text_barcode');
+
 const addToLocalStorage = (localStorageData, addItem) => {
 	let newData = localStorageData;
 	let checkedInput = checkInputData();
@@ -150,6 +148,10 @@ const addToLocalStorage = (localStorageData, addItem) => {
 	}
 
 	localStorage.setItem('userData', JSON.stringify(newData));
+};
+
+const addToJSON = () => {
+	console.log('json');
 };
 
 submitAddItem.addEventListener('click', () => {
@@ -163,29 +165,34 @@ submitAddItem.addEventListener('click', () => {
 const checkInputData = () => {
 	const inputDataToArray = [...addTextBarcode.value];
 
-	if (inputDataToArray.length > 7) return 0;
+	if (inputDataToArray.length > 8) return 0;
 
 	if (addTextBarcode.value === '') {
+		console.log('no text');
 		alert('no text');
 		return 0;
 	}
 
 	for (let i = 0; i < inputDataToArray.length; i++) {
 		if (inputDataToArray[i] === '`') {
-			alert('invalid character');
+			console.log('wrong char');
+			alert('wrong char');
 			return 0;
 		}
 	}
 
 	for (const key in localStorageData) {
 		if (key === addTextBarcode.value) {
-			alert('already exists');
+			console.log('estb');
+			alert('уже есть');
 			return 0;
 		}
 	}
 
 	return 1;
 };
+
+const submitDeleteItem = document.querySelector('.submit_delete_item');
 
 submitDeleteItem.addEventListener('click', () => {
 	const deleteItem = selectDelete.value;
