@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="css/style.css" />
-		<script type="module" src="script.js" defer></script>
+		<script type="module" src="/js/script.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/barcodes/JsBarcode.code128.min.js" defer></script>
 	</head>
 	<body>
@@ -28,20 +28,13 @@
 				<p>input text barcode</p>
 				<br />
 				<input type="text" id="add_text_barcode" placeholder="add-barcode" />
+				<button class="submit_add_item">add</button>
 			</div>
-
-			<div>
-				<input style="display: none" type="file" id="image_field" name="image_field" />
-			</div>
-
-			<button class="back">back</button>
-			<button class="submit_add_item">add</button>
 		</div>
 		<div class="delete-barcode" style="display: none">
 			<p>delete barcode</p>
 			<div>
 				<select class="select_delete" name="select_delete"></select>
-				<button class="back">back</button>
 				<button class="submit_delete_item">delete</button>
 			</div>
 		</div>
